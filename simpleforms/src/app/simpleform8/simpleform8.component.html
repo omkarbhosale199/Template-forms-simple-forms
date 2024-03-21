@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-6 mb-3  text-left rounded shadow py-5">
-        <h4>simpleform7 with radio and dropdown buttons</h4>
+        <h4>simpleform8 with dynamic value dropdown with radio button </h4>
           <form #myform="ngForm"  (ngSubmit)="OnSubmit(myform)">
                     <!-- #myform is template refrance variable we can access anywhere in html -->
                     <!--  #myform So form-group  create an instance by using ngForm -->
@@ -18,7 +18,7 @@
               <div class="form-group">
 
                   <label for="email">Email</label>
-                  <input class="form-control" type="text" id="email" name="email" placeholder="Enter email" ngModel required email #email="ngModel" minlength="8" maxlength="30">
+                  <input class="form-control" type="text" id="email" name="email" placeholder="Enter email"  required email #email="ngModel" minlength="8" maxlength="30" ngModel>
                   <!-- required email is validation -->
                           <!-- #email is template refrance variable  -->
                           <!-- #email="ngModel" So form-control  create an instance by using ngModel -->
@@ -35,20 +35,28 @@
               </div>
               <div class="form-group">
                 <label for="course">Select Course</label>
-                <select id="course" name="course" class="form-control" ngModel [(ngModel)]="defaultCourse" >
+                <select id="course" name="course" class="form-control"  [(ngModel)]="defaultCourse" ngModel >
+                  <!-- <select id="course" name="course" class="form-control" ngModel [ngModel]="defaultCourse" > this is also correct-->
                 <!-- ngModel is create instance of form and [(ngModel)] is for 2 way databinding to show default course -->
 
                 <!-- <option value="abc">Angular</option>
                  value="abc" for show data to server & value -- >> Angular is show data to user -->
                  <!-- value="Angular" is match in ts file default course :string= Angular  this is imp -->
-                 <option value="Angular">Angular</option>
-                 <option value="JavaScript">JavaScript</option>
-                 <option value="CSS">CSS</option>
-                 <option value="HTML5">HTML5</option>
-                 <option value="SQL">SQL</option>
-
+                 <option *ngFor="let course of arrayOfCourses" [value]="course">{{course}}</option>
+                 <!-- ts ---- >> html  -->
                 </select>
               </div>
+
+              <div class="input-group ">
+                <div class="input-group-prepend ">
+                  <div class="input-group-text mt-2" *ngFor="let gender of ArrayOfGenders">
+                    <!-- <input type="radio" id="{{gender.id}}" name="gender" value="{{gender.value}}"[ngModel]="defaultGender" ngModel > -->
+                    <input type="radio" id="{{gender.id}}" name="gender" [value]="gender.value" [(ngModel)]="defaultGender" ngModel>
+                    <label for="{{gender.id}}">{{gender.value}}</label>
+                  </div>
+                </div>
+              </div>
+                <!-- find another way for radio button on youtube -->
               <button type="submit" [disabled]="!myform.valid" class="btn btn-success mt-2">Submit</button>
 
           </form>

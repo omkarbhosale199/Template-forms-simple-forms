@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-simpleform8',
-  templateUrl: './simpleform8.component.html',
-  styleUrls: ['./simpleform8.component.css']
+  selector: 'app-simpleform9',
+  templateUrl: './simpleform9.component.html',
+  styleUrls: ['./simpleform9.component.css']
 })
-export class Simpleform8Component implements OnInit {
+export class Simpleform9Component implements OnInit {
   defaultCourse:string="SQL"
   // to set default Course we use this variable
 
@@ -24,7 +24,7 @@ value:"Female"},
   id:3,
   value:"Other"
 }
-]
+];
   constructor() { }
 
   ngOnInit(): void {
