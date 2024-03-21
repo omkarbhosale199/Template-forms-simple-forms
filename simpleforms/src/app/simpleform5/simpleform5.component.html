@@ -7,7 +7,15 @@
                     <!--  #myform So form-group  create an instance by using ngForm -->
              <div class="from-group">
                <label for="username">UserName</label>
-               <input class="form-control" type="text" placeholder="Enter user name" name="username" id="username" ngModel required >
+               <input class="form-control" type="text" placeholder="Enter user name" name="username" id="username"  ngModel  required #username="ngModel"  minlength="4" maxlength="10">
+               <small *ngIf="username.touched && username.errors">
+
+                <small *ngIf="username.errors['minlength']">
+                  *minimum length of name should be more than 4 </small>
+               <small *ngIf="username.errors['maxlength']">
+                  *maximum length of name should be less than 10 </small>
+
+               </small>
               </div>
               <div class="form-group">
                   <label for="email">Email</label>
@@ -38,3 +46,4 @@
   </div>
 
 </div>
+

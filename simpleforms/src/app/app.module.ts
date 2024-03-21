@@ -7,6 +7,9 @@ import { Simpleform1Component } from './simpleform1/simpleform1.component';
 import { Simpleform2Component } from './simpleform2/simpleform2.component';
 import { Simpleform3Component } from './simpleform3/simpleform3.component';
 import { Simpleform4Component } from './simpleform4/simpleform4.component';
+import { Simpleform5Component } from './simpleform5/simpleform5.component';
+import { Simpleform6Component } from './simpleform6/simpleform6.component';
+import { Simpleform7Component } from './simpleform7/simpleform7.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { Simpleform4Component } from './simpleform4/simpleform4.component';
     Simpleform2Component,
     Simpleform3Component,
     Simpleform4Component,
+    Simpleform5Component,
+    Simpleform6Component,
+    Simpleform7Component,
   ],
   imports: [
     BrowserModule,
