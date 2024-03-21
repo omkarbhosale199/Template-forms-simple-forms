@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6 text-left rounded shadow py-5">
+        <h4>simpleform4 email validation </h4>
+          <form #myform="ngForm"  (ngSubmit)="OnSubmit(myform)">
+                    <!-- #myform is template refrance variable we can access anywhere in html -->
+                    <!--  #myform So form-group  create an instance by using ngForm -->
+             <div class="from-group">
+               <label for="username">UserName</label>
+               <input class="form-control" type="text" placeholder="Enter user name" name="username" id="username" ngModel required >
+              </div>
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" type="text" id="email" name="email" placeholder="Enter email" ngModel required email #email="ngModel">
+                  <!-- required email is validation -->
+                          <!-- #email is template refrance variable  -->
+                          <!-- #email="ngModel" So form-control  create an instance by using ngModel -->
+           <small *nngIf="email.touched && email.errors">
+                     <!-- email is variable (template refrance variable ) and touched,errors is property's -->
+                     <!-- using variable we check property -->
+            <small *ngIf="email.errors['required']">* Email field is required </small>
+           <!-- we need to check error (inspect/console/form/controls/email/errors:{required:true}) -->
+            <small *ngIf="email.errors['email']"> * Email is not valid</small>
+
+            </small>
+              </div>
+              <button type="submit" [disabled]="!myform.valid" class="btn btn-success mt-2">Submit</button>
+
+          </form>
+
+      </div>
+
+  </div>
+
+</div>
