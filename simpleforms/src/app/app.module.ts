@@ -12,6 +12,8 @@ import { Simpleform6Component } from './simpleform6/simpleform6.component';
 import { Simpleform7Component } from './simpleform7/simpleform7.component';
 import { Simpleform8Component } from './simpleform8/simpleform8.component';
 import { Simpleform9Component } from './simpleform9/simpleform9.component';
+import { Simpleform10Component } from './simpleform10/simpleform10.component';
+import { Simpleform11Component } from './simpleform11/simpleform11.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { Simpleform9Component } from './simpleform9/simpleform9.component';
     Simpleform7Component,
     Simpleform8Component,
     Simpleform9Component,
+    Simpleform10Component,
+    Simpleform11Component,
   ],
   imports: [
     BrowserModule,

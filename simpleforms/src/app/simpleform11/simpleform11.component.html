@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6 mb-3  text-left rounded shadow py-5">
+        <h4>simpleform10 Assignment Reset button  </h4>
+          <form #myform="ngForm"  (ngSubmit)="OnSubmit(myform)">
+                    <!-- #myform is template refrance variable we can access anywhere in html -->
+                    <!--  #myform So form-group  create an instance by using ngForm -->
+              <div ngModelGroup="usersDetails">
+
+             <div class="from-group">
+
+               <label for="username">UserName</label>
+               <input class="form-control" type="text" placeholder="Enter user name" name="username" id="username"  ngModel  required #username="ngModel"  minlength="4" maxlength="10">
+               <small *ngIf="username.touched && username.errors">
+               <small *ngIf="username.errors['minlength']"> *minimum length of name should be more than 4 </small>
+               <small *ngIf="username.errors['maxlength']">*maximum length of name should be less than 10 </small>
+               </small>
+              </div>
+
+              <div class="form-group">
+
+                  <label for="email">Email</label>
+                  <input class="form-control" type="text" id="email" name="email" placeholder="Enter email"  required email #email="ngModel" minlength="8" maxlength="30" ngModel>
+                  <!-- required email is validation -->
+                          <!-- #email is template refrance variable  -->
+                          <!-- #email="ngModel" So form-control  create an instance by using ngModel -->
+           <small *ngIf="email.touched && email.errors">
+                     <!-- email is variable (template refrance variable ) and touched,errors is property's -->
+                     <!-- using variable we check property -->
+            <small *ngIf="email.errors['required']">* Email field is required </small>
+           <!-- we need to check error (inspect/console/form/controls/email/errors:{required:true}) -->
+            <small *ngIf="email.errors['email']">* Email is not valid</small>
+            <small *ngIf="email.errors['minlength']">*minimum length should be more than 8 </small>
+            <small *ngIf="email.errors['maxlength']">*maximum length should be less than 30 </small>
+
+            </small>
+              </div>
+
+            </div>
+            <div ngModelGroup="otherInfo">
+              <div class="form-group">
+                <label for="course">Select Course</label>
+                <select id="course" name="course" class="form-control"  [(ngModel)]="defaultCourse" ngModel >
+                  <!-- <select id="course" name="course" class="form-control" ngModel [ngModel]="defaultCourse" > this is also correct-->
+                <!-- ngModel is create instance of form and [(ngModel)] is for 2 way databinding to show default course -->
+
+                <!-- <option value="abc">Angular</option>
+                 value="abc" for show data to server & value -- >> Angular is show data to user -->
+                 <!-- value="Angular" is match in ts file default course :string= Angular  this is imp -->
+                 <option *ngFor="let course of arrayOfCourses" [value]="course">{{course}}</option>
+                 <!-- ts ---- >> html  -->
+                </select>
+              </div>
+
+              <div class="input-group ">
+                <div class="input-group-prepend ">
+                  <div class="input-group-text mt-2" *ngFor="let gender of ArrayOfGenders">
+                    <!-- <input type="radio" id="{{gender.id}}" name="gender" value="{{gender.value}}"[ngModel]="defaultGender" ngModel > -->
+                    <input type="radio" id="{{gender.id}}" name="gender" [value]="gender.value" [(ngModel)]="defaultGender" ngModel>
+                    <label for="{{gender.id}}">{{gender.value}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+                <!-- find another way for radio button on youtube -->
+              <button type="submit" [disabled]="!myform.valid" class="btn btn-success mt-2 ">Submit</button>
+
+              <button type="button"  class="btn btn-warning" (click)="onReset(myform)">reset</button>
+<div class="row justify-content-center mt-2" *ngIf="isSubmitted">
+  <h2>Form Data</h2>
+  <p>User Name: <strong>{{ysuvEmployee.username}}</strong></p>
+  <p>Mail ID: <strong>{{ysuvEmployee}}</strong></p>
+  <p>Course: <strong>{{ysuvEmployee}}</strong></p>
+  <p>Gender: <strong>{{ysuvEmployee}}</strong></p>
+</div>
+          </form>
+
+      </div>
+
+  </div>
+
+</div>
+
+
